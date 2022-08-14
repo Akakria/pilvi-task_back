@@ -17,7 +17,7 @@ module.exports = async function (context, req) {
     const database = client.db("PilviTasks")
     const collection = database.collection("Tasks")
     await collection.deleteMany({})
-    await collection.insertOne({ task })
+    await collection.insertOne(task)
     context.res = {
         // status: 200,  /* Defaults to 200 */
         body: "init is done"
