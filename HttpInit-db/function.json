@@ -5,9 +5,9 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
+      "route": "initnewdb",
       "methods": [
-        "get",
-        "post"
+        "get"
       ]
     },
     {
