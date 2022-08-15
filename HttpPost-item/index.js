@@ -10,7 +10,7 @@ module.exports = async function (context, req) {
     const database = client.db("PilviTasks")
     const collection = database.collection("Tasks")
 
-    await collection.insertOne(req)
+    await collection.insertOne(req.body)
 
     context.res = {
         // status: 200,  /* Defaults to 200 */
