@@ -5,12 +5,15 @@ const client = new MongoClient(url)
 
 
 module.exports = async function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
 
-    const triggerTask = { id: "Task" + Date.now(), descr: "Generic task" }
+    await client.connect();
+    const database = client.db("PilviTasks")
+    const collection = database.collection("Tasks")
+
+    await collection.insertOne(req)
 
     context.res = {
         // status: 200,  /* Defaults to 200 */
-        body: JSON.stringify(triggerTask)
+        body: "create ok"
     };
 }
