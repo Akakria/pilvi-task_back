@@ -1,8 +1,8 @@
 const { MongoClient } = require("mongodb")
 const { v4: uuidv4 } = require("uuid")
-
-const url = "mongodb://pilvi-app-mongodb:qafTav6Deh4Ltz3f4tWHSDtNg5XUH6BqhnicV6kcWjRruDl6TIGMnBRWjCnbu0YFSnpeL8HnDe8o4iHQOan2MA==@pilvi-app-mongodb.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@pilvi-app-mongodb@"
-const client = new MongoClient(url)
+var connectionString = Environment.GetEnvironmentVariable("TaskDbConnectionString");
+//const url = "mongodb://pilvi-app-mongodb:qafTav6Deh4Ltz3f4tWHSDtNg5XUH6BqhnicV6kcWjRruDl6TIGMnBRWjCnbu0YFSnpeL8HnDe8o4iHQOan2MA==@pilvi-app-mongodb.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@pilvi-app-mongodb@"
+const client = new MongoClient(connectionString)
 
 
 let task = {
