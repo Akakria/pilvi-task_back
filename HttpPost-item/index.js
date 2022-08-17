@@ -1,6 +1,6 @@
 const { MongoClient } = require("mongodb")
 
-var connectionString = process.env["TaskDbConnectionString"];
+var connectionString = process.env.TaskDbConnectionString;
 
 const url = connectionString
 const client = new MongoClient(url)
