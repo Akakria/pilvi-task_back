@@ -1,10 +1,24 @@
-module.exports = async function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
+const { MongoClient } = require("mongodb")
 
-    const triggerTask = { id: "Task" + Date.now(), descr: "Generic task" }
+const client = new MongoClient(process.env.TaskDbConnectionString)
+
+
+module.exports = async function (context, req) {
+
+    await client.connect();
+    const database = client.db("PilviTasks")
+    const collection = database.collection("Tasks")
+    const filter = { _id: req.body.id }
+    const updateDoc = {
+        $set: {
+            descr: req.body.descr
+        }
+    }
+
+    await collection.updateOne(filter, updateDoc)
 
     context.res = {
         // status: 200,  /* Defaults to 200 */
-        body: JSON.stringify(triggerTask)
+        body: "delete ok"
     };
 }
